@@ -30,7 +30,7 @@ export const CartSlice = createSlice({
       if (newQuantity > 0) {
         const updatedItems = state.items.map(item => item.id === itemToUpdate.id ? itemToUpdate : item);  
   
-    } else {
+      } else {
       //remove item if quantity is zero or less
         const updatedItems = state.items.splice(state.items.indexOf(itemToUpdate), 1);
       };
