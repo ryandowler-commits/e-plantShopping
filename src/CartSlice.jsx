@@ -16,8 +16,8 @@ export const CartSlice = createSlice({
         existsingItem.quantity ++ ;
         const updatedItem = { ...existsingItem }; // Create a new object to trigger state update  
         console.log('Updated item:', updatedItem);
-        const updatedItems = state.items.map(item => item.name === name ? updatedItem : item);  
-        console.log('Updated cart items:', updatedItems);
+        state.items.map(item => item.name === name ? updatedItem : item);  
+        console.log('Cart after update:', state.items);
       } else {
         //otherwise, item does not exist, add to cart with quantity 1
         state.items.push({name, image, cost, quantity: 1});  
@@ -27,7 +27,9 @@ export const CartSlice = createSlice({
     removeItem: (state, action) => {
       const {name} = action.payload;
       const idx = state.items.findIndex(item => item.name === name);
-      const updatedItems = state.items.splice(idx, 1);
+      if (idx !== -1) {
+      state.items.splice(idx, 1);
+      }
     },
     updateQuantity: (state, action) => {
       const {name, quantity} = action.payload;
@@ -35,12 +37,14 @@ export const CartSlice = createSlice({
         //if updated qty is greather than 0, update it
         const foundItem = state.items.find(item => item.name === name);
         const updatedItem = {...foundItem, quantity};
-        const updatedItems = state.items.map(item => item.name === name ? updatedItem : item);  
+        state.items.map(item => item.name === name ? updatedItem : item);  
   
       } else {
       //remove item if quantity is zero or less
         const idx = state.items.findIndex(item => item.name === name);
-        const updatedItems = state.items.splice(state.items.indexOf(idx), 1);
+        if (idx !== -1) {
+        state.items.splice(idx, 1);
+        }
       };
     },
   },
