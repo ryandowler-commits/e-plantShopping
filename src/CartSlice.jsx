@@ -33,16 +33,16 @@ export const CartSlice = createSlice({
     },
     updateQuantity: (state, action) => {
       const {name, quantity} = action.payload;
-      if (quantity > 0) {
-        //if updated qty is greather than 0, update it
-        state.items.map(item => item.name === name ? {...item, quantity} : item);  
+      const idx = state.items.findIndex(item => item.name === name);
+      if (quantity > 0 && idx !== -1) {
+        //if updated qty is greather than 0 and item exists, update it
+        state.items[idx].quantity = quantity;
   
-      } else {
+      } else if (quantity <= 0 && idx !== -1) {
       //remove item if quantity is zero or less
-        const idx = state.items.findIndex(item => item.name === name);
-        if (idx !== -1) {
         state.items.splice(idx, 1);
-        }
+      } else {
+          console.warn('Attempted to update quantity for non-existent item:', name);
       };
     },
   },
