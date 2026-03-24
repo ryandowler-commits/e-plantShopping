@@ -35,9 +35,7 @@ export const CartSlice = createSlice({
       const {name, quantity} = action.payload;
       if (quantity > 0) {
         //if updated qty is greather than 0, update it
-        const foundItem = state.items.find(item => item.name === name);
-        const updatedItem = {...foundItem, quantity};
-        state.items.map(item => item.name === name ? updatedItem : item);  
+        state.items.map(item => item.name === name ? {...item, quantity} : item);  
   
       } else {
       //remove item if quantity is zero or less
