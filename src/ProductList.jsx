@@ -254,6 +254,10 @@ function ProductList({ onHomeClick }) {
         e.preventDefault();
         setShowCart(false);
     };
+
+    const handleAddToCart = (item) => {
+        dispatch(addItem(item));    
+    };
     return (
         <div>
             <div className="navbar" style={styleObj}>
@@ -282,7 +286,7 @@ function ProductList({ onHomeClick }) {
                                 {category.plants.map((item) => (
                                     <div className="product-card" key={item.name} >
                                         <div className="product-image">
-                                            <img src={item.img} alt={item.name} />
+                                            <img src={item.image} alt={item.name} />
                                         </div>
                                         <div className="product-title">
                                             {item.name}
