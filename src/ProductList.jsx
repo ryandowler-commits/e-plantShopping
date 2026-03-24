@@ -258,7 +258,7 @@ function ProductList({ onHomeClick }) {
     };
 
     const handleAddToCart = (item) => {
-        const dispatch = useDispatch();
+        console.log('Adding to cart:', item);
         dispatch(addItem(item));    
     };
     return (
