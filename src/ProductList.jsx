@@ -306,16 +306,16 @@ function ProductList({ onHomeClick }) {
                                     </div>
                                     
 
-                                ))};
+                                ))}
                         </div>
-                    ))};
+                    ))}
                 </div>
                       
             ) : (
                 <CartItem onContinueShopping={handleContinueShopping} />
     
-            );
-            };
-        </div>);
-};
+            )}
+        </div>
+    );
+}
 export default ProductList;
