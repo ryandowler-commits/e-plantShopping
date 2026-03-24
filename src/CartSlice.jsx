@@ -10,12 +10,18 @@ export const CartSlice = createSlice({
       console.log('Adding item to cart:', action.payload);
       const {name, image, cost} = action.payload;
       const existsingItem = state.items.find(item => item.name === name);
+      console.log('Existing item in cart:', existsingItem);
       if(existsingItem){ 
         //item exists, increment quantity
         existsingItem.quantity ++ ;
+        const updatedItem = { ...existsingItem }; // Create a new object to trigger state update  
+        console.log('Updated item:', updatedItem);
+        const updatedItems = state.items.map(item => item.name === name ? updatedItem : item);  
+        console.log('Updated cart items:', updatedItems);
       } else {
         //otherwise, item does not exist, add to cart with quantity 1
         state.items.push({name, image, cost, quantity: 1});  
+        console.log('Cart with new item:', state.items);
       };
     },
     removeItem: (state, action) => {

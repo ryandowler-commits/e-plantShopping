@@ -12,9 +12,9 @@ const CartItem = ({ onContinueShopping }) => {
     let totalAmount =  0;
     cart.forEach(item => {
   
-      const cost = parseFloat(item.cost.substring(1)); // Remove the '$' sign and convert to number
-      console.log('Cost:', cost);
-      totalAmount += cost * item.quantity;
+      const costNew = parseFloat(item.cost.substring(1)); // Remove the '$' sign and convert to number
+      console.log('Cost:', costNew);
+      totalAmount += costNew * item.quantity;
       
     });
     console.log('Total Amount:', totalAmount);
