@@ -303,7 +303,7 @@ function ProductList({ onHomeClick }) {
                                 <h1>{category.category}</h1>
                             </div>
                             <div className="product-list">
-                                {category.plants.map((item) => (
+                                {category.plants.map((item) => {
                                     const isInCart = cartItems.find(cartItem => cartItem.name === item.name);
                                     return (
                                     <div className="product-card" key={item.name} >
@@ -330,11 +330,13 @@ function ProductList({ onHomeClick }) {
                                         </div>
                                     </div>
                                     );
-                                ))}
+                                     }               
+                                )}
                             </div>
                         </div>
 
-                    ))}
+                    )
+                    )}
                       
                 </div>
             ) : (
