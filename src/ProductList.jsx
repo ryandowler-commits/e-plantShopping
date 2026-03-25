@@ -304,6 +304,7 @@ function ProductList({ onHomeClick }) {
                             </div>
                             <div className="product-list">
                                 {category.plants.map((item) => (
+                                    const isInCart = cartItems.find(cartItem => cartItem.name === item.name);
                                     <div className="product-card" key={item.name} >
                                         <div className="product-image">
                                             <img src={item.image} alt={item.name} />
@@ -318,12 +319,13 @@ function ProductList({ onHomeClick }) {
                                             {item.cost}
                                         </div>
                                         <div>
-                                            <button 
-                                            className={cartItems.find(cartItem => cartItem.name === item.name) ? "product-button.added-to-cart" : "product-button" }
-                                            onClick={() => handleAddToCart(item)}>
-                                                {cartItems.find(cartItem => cartItem.name === item.name) ? "Added to Cart" : "Add to Cart"}
-                                            </button>
-                                    
+                                            
+                                                {isInCart ? 
+                                                    <div className="product-button.added-to-cart" >Added to Cart</div> 
+                                                    : 
+                                                    <button className="product-button" onClick={() => handleAddToCart(item)}>Add to Cart</button>
+                                                }
+                                            
                                         </div>
                                     </div>
 
