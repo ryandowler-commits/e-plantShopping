@@ -322,7 +322,7 @@ function ProductList({ onHomeClick }) {
                                         <div>
                                             
                                                 {isInCart ? 
-                                                    <button className="product-button.added-to-cart" >Added to Cart</button> 
+                                                    <button className="product-button added-to-cart" >Added to Cart</button> 
                                                     : 
                                                     <button className="product-button" onClick={() => handleAddToCart(item)}>Add to Cart</button>
                                                 }
