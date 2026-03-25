@@ -305,6 +305,7 @@ function ProductList({ onHomeClick }) {
                             <div className="product-list">
                                 {category.plants.map((item) => (
                                     const isInCart = cartItems.find(cartItem => cartItem.name === item.name);
+                                    return (
                                     <div className="product-card" key={item.name} >
                                         <div className="product-image">
                                             <img src={item.image} alt={item.name} />
@@ -328,7 +329,7 @@ function ProductList({ onHomeClick }) {
                                             
                                         </div>
                                     </div>
-
+                                    );
                                 ))}
                             </div>
                         </div>
