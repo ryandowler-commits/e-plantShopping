@@ -230,7 +230,7 @@ function ProductList({ onHomeClick }) {
         }
     ];
     const styleObj = {
-        backgroundColor: '#4CAF50',
+        backgroundColor: '#626b63',
         color: '#fff!important',
         padding: '15px',
         display: 'flex',
@@ -312,7 +312,7 @@ function ProductList({ onHomeClick }) {
                 <div className="product-grid">
                     {plantsArray.map((category) => (
                         <div className="product-grid">
-                            <div className="plant-heading plantname-heading">
+                            <div className="plantname_heading plant_heading">
                                 <h1>{category.category}</h1>
                             </div>
                             <div className="product-list">
