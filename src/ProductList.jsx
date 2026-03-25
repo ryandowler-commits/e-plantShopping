@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './ProductList.css'
 import CartItem from './CartItem';
 import { addItem } from './CartSlice';
@@ -8,6 +8,7 @@ function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const dispatch = useDispatch();
+    const cartItems = useSelector((state) => state.cart.items);
 
     const plantsArray = [
         {
@@ -298,7 +299,7 @@ function ProductList({ onHomeClick }) {
                 <div className="product-grid">
                     {plantsArray.map((category) => (
                         <div className="product-grid">
-                            <div className="plant-heading plantname_heading">
+                            <div className="plant-heading plantname-heading">
                                 <h1>{category.category}</h1>
                             </div>
                             <div className="product-list">
@@ -318,9 +319,9 @@ function ProductList({ onHomeClick }) {
                                         </div>
                                         <div>
                                             <button 
-                                            className="product-button" 
+                                            className={cartItems.find(cartItem => cartItem.name === item.name) ? "product-button.added-to-cart" : "product-button" }
                                             onClick={() => handleAddToCart(item)}>
-                                                Add to Cart
+                                                {cartItems.find(cartItem => cartItem.name === item.name) ? "Added to Cart" : "Add to Cart"}
                                             </button>
                                     
                                         </div>
