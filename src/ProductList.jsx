@@ -9,6 +9,18 @@ function ProductList({ onHomeClick }) {
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart.items);
+    
+    // Calculate total count of items in cart
+  const calculateTotalCount = () => {
+    let totalCount =  0;
+    cartItems.forEach(item => {
+      totalCount += item.quantity;
+      
+    });
+
+    return totalCount ;
+    };
+
 
     const plantsArray = [
         {
@@ -267,7 +279,7 @@ function ProductList({ onHomeClick }) {
             <div className="navbar" style={styleObj}>
                 <div className="tag">
                     <div className="luxury">
-                        <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
+                        <img src="https://cdn.pixabay.com/photo/2016/06/09/18/36/logo-1446293_1280.png" alt="" />
                         <a href="/" onClick={(e) => handleHomeClick(e)}>
                             <div>
                                 <h3 style={{ color: 'white' }}>Gabi's Garden</h3>
@@ -284,6 +296,7 @@ function ProductList({ onHomeClick }) {
                     <div> 
                         <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
                             <h1 className='cart'>
+                                <div className="cart_quantity_count">{calculateTotalCount()}</div>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor" height="68" width="68">
                                 <rect width="156" height="156" fill="none"></rect>
                                 <circle cx="80" cy="216" r="12"></circle>
